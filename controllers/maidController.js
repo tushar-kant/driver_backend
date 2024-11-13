@@ -26,14 +26,18 @@ const getMaidById = async (req, res) => {
 
 // Get maids by location (city)
 const getMaidsByLocation = async (req, res) => {
+  
   const { city } = req.query;
+  console.log('City parameter:', city); // Log the city parameter for debugging
   try {
     const maids = await Maid.find(city ? { city } : {});
     res.json(maids);
   } catch (error) {
+    console.error('Error in getMaidsByLocation:', error); // Log the error for more information
     res.status(500).json({ message: 'Server Error' });
   }
 };
+
 
 // Search maids by name, city, state, postcode, or country
 const searchMaids = async (req, res) => {

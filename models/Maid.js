@@ -15,12 +15,11 @@ const maidSchema = new mongoose.Schema({
   reviews: [{ 
     user: { type: String, required: true },
     review: { type: String, required: true },
-    rating: { type: Number, required: true, min: 0, max: 5 },
+    rating: { type: Number, required: true },
     date: { type: Date, default: Date.now },
   }],
 });
 
 // Create the Maid model
-const Maid = mongoose.model('Maid', maidSchema);
 
-module.exports = Maid;
+module.exports = mongoose.model('Maid', maidSchema);

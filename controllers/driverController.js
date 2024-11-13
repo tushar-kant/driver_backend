@@ -28,6 +28,8 @@ const getDriverById = async (req, res) => {
 // Get drivers by location (city)
 const getDriversByLocation = async (req, res) => {
   const { city } = req.query;
+  console.log('City parameter:', city); // Log the city parameter for debugging
+
   try {
     const drivers = await Driver.find(city ? { city } : {});
     res.json(drivers);
